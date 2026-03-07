@@ -1,6 +1,6 @@
 const { pool } = require("../config/db");
 
-// ✅ PICK DEFAULT CHANNEL (first enabled channel for workspace)
+// PICK DEFAULT CHANNEL (first enabled channel for workspace)
 async function pickDefaultChannel(workspaceId) {
     try {
         const result = await pool.query(
@@ -34,7 +34,7 @@ async function pickDefaultChannel(workspaceId) {
     }
 }
 
-// ✅ SEND VIA CHANNEL (validate and log failures)
+// SEND VIA CHANNEL (validate and log failures)
 async function sendViaChannel({ workspaceId, channelType, toEmail, toPhone, body, context }) {
     try {
         // Find channel

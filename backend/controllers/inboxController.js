@@ -1,7 +1,7 @@
 const { pool } = require("../config/db");
 const { z } = require("zod");
 
-// ✅ GET ALL CONVERSATIONS
+// GET ALL CONVERSATIONS
 const getConversations = async (req, res) => {
     try {
         const workspaceId = req.workspace.id;
@@ -52,7 +52,7 @@ const getConversations = async (req, res) => {
     }
 };
 
-// ✅ GET CONVERSATION WITH MESSAGES
+// GET CONVERSATION WITH MESSAGES
 const getConversationDetail = async (req, res) => {
     try {
         const workspaceId = req.workspace.id;
@@ -128,7 +128,7 @@ const getConversationDetail = async (req, res) => {
     }
 };
 
-// ✅ POST REPLY TO CONVERSATION
+// POST REPLY TO CONVERSATION
 const replyToConversation = async (req, res) => {
     try {
         const workspaceId = req.workspace.id;
@@ -205,7 +205,7 @@ const replyToConversation = async (req, res) => {
     }
 };
 
-// ✅ POST INBOUND MESSAGE (MVP: simulate for demos)
+// POST INBOUND MESSAGE (MVP: simulate for demos)
 const addInboundMessage = async (req, res) => {
     try {
         const workspaceId = req.workspace.id;

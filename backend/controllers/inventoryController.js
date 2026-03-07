@@ -1,7 +1,7 @@
 const { pool } = require("../config/db");
 const { z } = require("zod");
 
-// ✅ GET ALL INVENTORY ITEMS
+// GET ALL INVENTORY ITEMS
 const getInventoryItems = async (req, res) => {
     try {
         const workspaceId = req.workspace.id;
@@ -34,7 +34,7 @@ const getInventoryItems = async (req, res) => {
     }
 };
 
-// ✅ UPDATE INVENTORY ITEM
+// UPDATE INVENTORY ITEM
 const updateInventoryItem = async (req, res) => {
     try {
         const workspaceId = req.workspace.id;
@@ -101,7 +101,7 @@ const updateInventoryItem = async (req, res) => {
     }
 };
 
-// ✅ ADJUST INVENTORY (with usage tracking and alerts)
+// ADJUST INVENTORY (with usage tracking and alerts)
 const adjustInventory = async (req, res) => {
     try {
         const workspaceId = req.workspace.id;

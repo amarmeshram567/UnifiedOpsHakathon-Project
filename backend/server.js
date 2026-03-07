@@ -43,14 +43,14 @@ app.use("/api/inventory", inventoryRouter)
 async function startServer() {
     try {
         await pool.query("SELECT 1");   // test query
-        console.log("✅ Database connected successfully");
+        console.log("Database connected successfully");
 
         app.listen(PORT, () => {
-            console.log(`🚀 Server running on port http://localhost:${PORT}`);
+            console.log(`Server running on port http://localhost:${PORT}`);
         });
 
     } catch (error) {
-        console.error("❌ Database connection failed:", error.message);
+        console.error("Database connection failed:", error.message);
         process.exit(1); // stop app if DB not connected
     }
 }

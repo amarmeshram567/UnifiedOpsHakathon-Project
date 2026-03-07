@@ -2,7 +2,7 @@ const { pool } = require("../config/db");
 const { pickDefaultChannel, sendViaChannel } = require("../integration/channels");
 const { nanoid } = require("nanoid");
 
-// ✅ LOG EVENT
+//  LOG EVENT
 async function logEvent(workspaceId, event, payloadJson) {
     try {
         await pool.query(
@@ -17,7 +17,7 @@ async function logEvent(workspaceId, event, payloadJson) {
     }
 }
 
-// ✅ CREATE ALERT
+//  CREATE ALERT
 async function createAlert({ workspaceId, severity = "INFO", type, title, body, linkPath }) {
     try {
         await pool.query(
@@ -32,7 +32,7 @@ async function createAlert({ workspaceId, severity = "INFO", type, title, body, 
     }
 }
 
-// ✅ ON NEW CONTACT (send welcome message)
+// ON NEW CONTACT (send welcome message)
 async function onNewContact({ workspaceId, contactId, conversationId }) {
     try {
         // Get contact form settings and contact
@@ -106,7 +106,7 @@ async function onNewContact({ workspaceId, contactId, conversationId }) {
     }
 }
 
-// ✅ ON BOOKING CREATED (send confirmation, create forms, consume inventory)
+//  ON BOOKING CREATED (send confirmation, create forms, consume inventory)
 async function onBookingCreated({ workspaceId, bookingId }) {
     try {
         // Fetch booking with contact and booking type
@@ -260,7 +260,7 @@ async function onBookingCreated({ workspaceId, bookingId }) {
     }
 }
 
-// ✅ RUN AUTOMATION TICK (handle overdue forms + missed messages)
+//  RUN AUTOMATION TICK (handle overdue forms + missed messages)
 async function runAutomationTick() {
     try {
         const now = new Date();

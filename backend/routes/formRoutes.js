@@ -10,10 +10,10 @@ formRouter.use(requireAuth());
 formRouter.use(requireWorkspaceAccess());
 formRouter.use(requireActiveWorkspace());
 
-// ✅ GET ALL FORM RESPONSES
+// GET ALL FORM RESPONSES
 formRouter.get("/", getFormResponses);
 
-// ✅ SEND FORM REMINDER
+// SEND FORM REMINDER
 formRouter.post("/:id/remind", remindFormResponse);
 
 module.exports = formRouter;

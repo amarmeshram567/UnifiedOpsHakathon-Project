@@ -2,7 +2,7 @@ const { z } = require('zod');
 const { pool } = require('../config/db');
 
 
-// ✅ GET ALL BOOKINGS
+//  GET ALL BOOKINGS
 const getAllBookings = async (req, res) => {
     try {
         const workspaceId = req.workspace.id;
@@ -34,7 +34,7 @@ const getAllBookings = async (req, res) => {
 };
 
 
-// ✅ UPDATE BOOKING STATUS
+//  UPDATE BOOKING STATUS
 const updateBookingStatus = async (req, res) => {
     try {
         const workspaceId = req.workspace.id;

@@ -3,7 +3,7 @@ const { z } = require("zod");
 const { nanoid } = require("nanoid");
 const bcrypt = require("bcryptjs");
 
-// ✅ GET ALL WORKSPACES (by user)
+// GET ALL WORKSPACES (by user)
 const getWorkspaces = async (req, res) => {
     try {
         const userId = req.user.id;
@@ -47,7 +47,7 @@ const getWorkspaces = async (req, res) => {
     }
 };
 
-// ✅ CREATE WORKSPACE
+// CREATE WORKSPACE
 const createWorkspace = async (req, res) => {
     try {
 
@@ -126,7 +126,7 @@ const createWorkspace = async (req, res) => {
     }
 };
 
-// ✅ GET WORKSPACE BY ID
+// GET WORKSPACE BY ID
 const getWorkspaceById = async (req, res) => {
     try {
         const workspaceId = Number(req.params.workspaceId);
@@ -165,7 +165,7 @@ const getWorkspaceById = async (req, res) => {
     }
 };
 
-// ✅ GET WORKSPACE SETUP (all onboarding data)
+// GET WORKSPACE SETUP (all onboarding data)
 const getWorkspaceSetup = async (req, res) => {
     try {
         const workspaceId = Number(req.params.workspaceId);
@@ -239,7 +239,7 @@ const getWorkspaceSetup = async (req, res) => {
     }
 };
 
-// ✅ ONBOARDING: CHANNELS
+// ONBOARDING: CHANNELS
 const onboardingChannels = async (req, res) => {
     try {
 
@@ -334,7 +334,7 @@ const onboardingChannels = async (req, res) => {
     }
 };
 
-// ✅ ONBOARDING: CONTACT FORM
+// ONBOARDING: CONTACT FORM
 const onboardingContactForm = async (req, res) => {
     try {
         const workspaceId = Number(req.params.workspaceId);
@@ -403,7 +403,7 @@ const onboardingContactForm = async (req, res) => {
     }
 };
 
-// ✅ ONBOARDING: BOOKING SETUP
+// ONBOARDING: BOOKING SETUP
 const onboardingBookingSetup = async (req, res) => {
     try {
         const workspaceId = Number(req.params.workspaceId);
@@ -505,7 +505,7 @@ const onboardingBookingSetup = async (req, res) => {
     }
 };
 
-// ✅ ONBOARDING: FORMS
+// ONBOARDING: FORMS
 const onboardingForms = async (req, res) => {
     try {
         const workspaceId = Number(req.params.workspaceId);
@@ -591,7 +591,7 @@ const onboardingForms = async (req, res) => {
     }
 };
 
-// ✅ ONBOARDING: INVENTORY
+// ONBOARDING: INVENTORY
 const onboardingInventory = async (req, res) => {
     try {
         const workspaceId = Number(req.params.workspaceId);
@@ -671,7 +671,7 @@ const onboardingInventory = async (req, res) => {
     }
 };
 
-// ✅ ONBOARDING: STAFF
+// ONBOARDING: STAFF
 const onboardingStaff = async (req, res) => {
     try {
         const workspaceId = Number(req.params.workspaceId);
@@ -742,7 +742,7 @@ const onboardingStaff = async (req, res) => {
     }
 };
 
-// ✅ CREATE STAFF (MVP helper)
+// CREATE STAFF (MVP helper)
 const createStaff = async (req, res) => {
     try {
         const workspaceId = Number(req.params.workspaceId);
@@ -823,7 +823,7 @@ const createStaff = async (req, res) => {
     }
 };
 
-// ✅ ACTIVATE WORKSPACE
+// ACTIVATE WORKSPACE
 const activateWorkspace = async (req, res) => {
     try {
         const workspaceId = Number(req.params.workspaceId);
@@ -890,7 +890,7 @@ const activateWorkspace = async (req, res) => {
     }
 };
 
-// ✅ GET STAFF (all members of workspace)
+//  GET STAFF (all members of workspace)
 const getStaff = async (req, res) => {
     try {
         const workspaceId = Number(req.params.workspaceId);

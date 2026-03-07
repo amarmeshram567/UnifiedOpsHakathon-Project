@@ -10,7 +10,7 @@ dashboardRouter.use(requireAuth());
 dashboardRouter.use(requireWorkspaceAccess());
 dashboardRouter.use(requireActiveWorkspace());
 
-// ✅ GET DASHBOARD OVERVIEW
+// GET DASHBOARD OVERVIEW
 dashboardRouter.get("/", getDashboardOverview);
 
 module.exports = dashboardRouter;

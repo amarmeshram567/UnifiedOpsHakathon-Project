@@ -1,6 +1,6 @@
 const { pool } = require("../config/db");
 
-// ✅ GET DASHBOARD OVERVIEW
+// GET DASHBOARD OVERVIEW
 const getDashboardOverview = async (req, res) => {
     try {
         const workspaceId = req.workspace.id;

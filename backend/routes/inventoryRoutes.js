@@ -14,13 +14,13 @@ inventoryRouter.use(requireAuth());
 inventoryRouter.use(requireWorkspaceAccess());
 inventoryRouter.use(requireActiveWorkspace());
 
-// ✅ GET ALL INVENTORY ITEMS
+// GET ALL INVENTORY ITEMS
 inventoryRouter.get("/", getInventoryItems);
 
-// ✅ UPDATE INVENTORY ITEM
+// UPDATE INVENTORY ITEM
 inventoryRouter.patch("/:id", updateInventoryItem);
 
-// ✅ ADJUST INVENTORY QUANTITY
+// ADJUST INVENTORY QUANTITY
 inventoryRouter.post("/:id/adjust", adjustInventory);
 
 module.exports = inventoryRouter;

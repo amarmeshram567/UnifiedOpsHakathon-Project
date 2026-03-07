@@ -15,16 +15,16 @@ inboxRouter.use(requireAuth());
 inboxRouter.use(requireWorkspaceAccess());
 inboxRouter.use(requireActiveWorkspace());
 
-// ✅ GET ALL CONVERSATIONS
+// GET ALL CONVERSATIONS
 inboxRouter.get("/conversations", getConversations);
 
-// ✅ GET CONVERSATION DETAIL
+// GET CONVERSATION DETAIL
 inboxRouter.get("/conversations/:id", getConversationDetail);
 
-// ✅ POST REPLY TO CONVERSATION
+// POST REPLY TO CONVERSATION
 inboxRouter.post("/conversations/:id/reply", replyToConversation);
 
-// ✅ POST INBOUND MESSAGE (MVP demo endpoint)
+// POST INBOUND MESSAGE (MVP demo endpoint)
 inboxRouter.post("/conversations/:id/inbound", addInboundMessage);
 
 module.exports = inboxRouter;

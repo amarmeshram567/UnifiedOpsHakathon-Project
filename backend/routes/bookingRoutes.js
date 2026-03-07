@@ -23,8 +23,8 @@ const { requireActiveWorkspace, requireWorkspaceAccess } = require("../middlewar
 const bookingRouter = express.Router();
 
 bookingRouter.use(requireAuth());
-bookingRouter.use(requireWorkspaceAccess());   // ✅ load workspace first
-bookingRouter.use(requireActiveWorkspace());  // ✅ then check active
+bookingRouter.use(requireWorkspaceAccess());   // load workspace first
+bookingRouter.use(requireActiveWorkspace());  // then check active
 
 bookingRouter.get("/", getAllBookings);
 bookingRouter.patch("/:id/status", updateBookingStatus);
