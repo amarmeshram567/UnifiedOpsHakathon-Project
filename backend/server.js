@@ -15,7 +15,10 @@ const publicRouter = require("./routes/publicRoutes");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors({ origin: true, credentials: true }))
+app.use(cors({
+    origin: "https://unified-ops-hakathon-project.vercel.app",
+    credentials: true
+}))
 app.use(express.json())
 app.use(morgan("dev"));
 

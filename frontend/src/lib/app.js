@@ -37,6 +37,7 @@ export async function apiFetch(path, { method = "GET", token, workspaceId, body 
     const res = await fetch(`${API_BASE}${path}`, {
         method,
         headers,
+        credentials: "include",
         body: body !== undefined ? JSON.stringify(body) : undefined,
     });
 
@@ -50,6 +51,7 @@ export async function apiFetch(path, { method = "GET", token, workspaceId, body 
 
 const api = axios.create({
     baseURL: API_BASE,
+    withCredentials: true,
     headers: {
         "Content-Type": "application/json",
     },
