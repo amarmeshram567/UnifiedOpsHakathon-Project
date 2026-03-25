@@ -18,6 +18,7 @@ import Forms from './pages/app/Forms';
 import Inventory from './pages/app/Inventory';
 import { Toaster } from 'react-hot-toast';
 import Staff from './pages/app/Staff';
+import Integrations from './pages/app/Integrations';
 
 const App = () => {
   return (
@@ -69,6 +70,7 @@ const App = () => {
                 <Route path="forms" element={<Forms />} />
                 <Route path="inventory" element={<Inventory />} />
                 <Route path='staff' element={<Staff />} />
+                <Route path="settings/integrations" element={<Integrations />} />  {/* ← add this */}
               </Route>
             </Route>
           </Route>

@@ -7,6 +7,8 @@ const { pool } = require("../config/db");
 exports.register = async (req, res) => {
     const { name, email, password } = req.body;
 
+    console.log(name, email, password)
+
     try {
         // Check if user exists
         const userExists = await pool.query(

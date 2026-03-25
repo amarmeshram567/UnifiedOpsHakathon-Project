@@ -17,6 +17,7 @@ import {
     CircleUserRoundIcon,
     ExternalLink,
     Users,
+    Plug,
 } from "lucide-react";
 
 function NavItem({ to, icon: Icon, children, collapsed, onClick }) {
@@ -212,6 +213,7 @@ export default function AppShell({ children }) {
                                 <NavItem to="/app/forms" icon={FileText} collapsed={collapsed} onClick={closeMobile}>Forms</NavItem>
                                 <NavItem to="/app/inventory" icon={Package} collapsed={collapsed} onClick={closeMobile}>Inventory</NavItem>
                                 <NavItem to="/app/staff" icon={Users} collapsed={collapsed} onClick={closeMobile}>Staff</NavItem>
+                                <NavItem to="/app/settings/integrations" icon={Settings} collapsed={collapsed} onClick={closeMobile}>Settings</NavItem>
                             </nav>
                         </div>
 
