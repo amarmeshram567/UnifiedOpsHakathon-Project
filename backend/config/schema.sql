@@ -1,10 +1,5 @@
--- ============================================================
---  db.sql — Full database schema
--- ============================================================
 
--- ------------------------------------------------------------
--- users
--- ------------------------------------------------------------
+-- Users
 CREATE TABLE users (
     id            SERIAL PRIMARY KEY,
     name          TEXT        NOT NULL,
@@ -13,9 +8,7 @@ CREATE TABLE users (
     created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- ------------------------------------------------------------
--- workspaces
--- ------------------------------------------------------------
+-- Workspaces
 CREATE TABLE workspaces (
     id              SERIAL PRIMARY KEY,
     slug            TEXT        NOT NULL UNIQUE,
@@ -28,9 +21,7 @@ CREATE TABLE workspaces (
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- ------------------------------------------------------------
 -- memberships  (users <-> workspaces, role: OWNER | STAFF)
--- ------------------------------------------------------------
 CREATE TABLE memberships (
     id           SERIAL PRIMARY KEY,
     user_id      INT         NOT NULL REFERENCES users(id)      ON DELETE CASCADE,
@@ -40,9 +31,7 @@ CREATE TABLE memberships (
     UNIQUE (user_id, workspace_id)
 );
 
--- ------------------------------------------------------------
 -- integration_channels  (EMAIL | SMS per workspace)
--- ------------------------------------------------------------
 CREATE TABLE integration_channels (
     id           SERIAL PRIMARY KEY,
     workspace_id INT     NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
@@ -53,9 +42,7 @@ CREATE TABLE integration_channels (
     UNIQUE (workspace_id, type)
 );
 
--- ------------------------------------------------------------
 -- contact_form_settings  (one row per workspace)
--- ------------------------------------------------------------
 CREATE TABLE contact_form_settings (
     id           SERIAL PRIMARY KEY,
     workspace_id INT     NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE UNIQUE,
@@ -63,9 +50,7 @@ CREATE TABLE contact_form_settings (
     welcome_text TEXT
 );
 
--- ------------------------------------------------------------
 -- contacts
--- ------------------------------------------------------------
 CREATE TABLE contacts (
     id           SERIAL PRIMARY KEY,
     workspace_id INT         NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
@@ -75,9 +60,7 @@ CREATE TABLE contacts (
     created_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- ------------------------------------------------------------
 -- conversations
--- ------------------------------------------------------------
 CREATE TABLE conversations (
     id                SERIAL PRIMARY KEY,
     workspace_id      INT         NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
@@ -88,9 +71,7 @@ CREATE TABLE conversations (
     created_at        TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- ------------------------------------------------------------
 -- messages
--- ------------------------------------------------------------
 CREATE TABLE messages (
     id              SERIAL PRIMARY KEY,
     conversation_id INT         NOT NULL REFERENCES conversations(id) ON DELETE CASCADE,
@@ -100,9 +81,7 @@ CREATE TABLE messages (
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- ------------------------------------------------------------
 -- booking_types
--- ------------------------------------------------------------
 CREATE TABLE booking_types (
     id           SERIAL PRIMARY KEY,
     workspace_id INT  NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
@@ -111,9 +90,7 @@ CREATE TABLE booking_types (
     location     TEXT
 );
 
--- ------------------------------------------------------------
 -- availabilities
--- ------------------------------------------------------------
 CREATE TABLE availabilities (
     id           SERIAL PRIMARY KEY,
     workspace_id INT  NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
@@ -122,9 +99,7 @@ CREATE TABLE availabilities (
     end_time     TEXT NOT NULL
 );
 
--- ------------------------------------------------------------
 -- bookings
--- ------------------------------------------------------------
 CREATE TABLE bookings (
     id              SERIAL PRIMARY KEY,
     workspace_id    INT         NOT NULL REFERENCES workspaces(id)    ON DELETE CASCADE,
@@ -137,9 +112,7 @@ CREATE TABLE bookings (
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- ------------------------------------------------------------
 -- inventory_items
--- ------------------------------------------------------------
 CREATE TABLE inventory_items (
     id           SERIAL PRIMARY KEY,
     workspace_id INT         NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
@@ -151,9 +124,7 @@ CREATE TABLE inventory_items (
     updated_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- ------------------------------------------------------------
 -- booking_type_resources  (inventory consumed per booking type)
--- ------------------------------------------------------------
 CREATE TABLE booking_type_resources (
     id                  SERIAL PRIMARY KEY,
     workspace_id        INT NOT NULL REFERENCES workspaces(id)    ON DELETE CASCADE,
@@ -162,9 +133,7 @@ CREATE TABLE booking_type_resources (
     quantity_per_booking INT NOT NULL DEFAULT 1
 );
 
--- ------------------------------------------------------------
 -- inventory_usage  (audit log of stock changes)
--- ------------------------------------------------------------
 CREATE TABLE inventory_usage (
     id                SERIAL PRIMARY KEY,
     workspace_id      INT         NOT NULL REFERENCES workspaces(id)      ON DELETE CASCADE,
@@ -175,9 +144,7 @@ CREATE TABLE inventory_usage (
     created_at        TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- ------------------------------------------------------------
 -- form_templates
--- ------------------------------------------------------------
 CREATE TABLE form_templates (
     id              SERIAL PRIMARY KEY,
     workspace_id    INT  NOT NULL REFERENCES workspaces(id)    ON DELETE CASCADE,
@@ -187,9 +154,7 @@ CREATE TABLE form_templates (
     fields_json     JSONB NOT NULL DEFAULT '{"fields":[]}'
 );
 
--- ------------------------------------------------------------
 -- form_responses
--- ------------------------------------------------------------
 CREATE TABLE form_responses (
     id           SERIAL PRIMARY KEY,
     workspace_id INT         NOT NULL REFERENCES workspaces(id)     ON DELETE CASCADE,
@@ -205,9 +170,7 @@ CREATE TABLE form_responses (
     updated_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- ------------------------------------------------------------
 -- alerts
--- ------------------------------------------------------------
 CREATE TABLE alerts (
     id           SERIAL PRIMARY KEY,
     workspace_id INT         NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
@@ -220,9 +183,7 @@ CREATE TABLE alerts (
     created_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- ------------------------------------------------------------
 -- event_logs  (append-only audit trail)
--- ------------------------------------------------------------
 CREATE TABLE event_logs (
     id           SERIAL PRIMARY KEY,
     workspace_id INT         NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
@@ -257,8 +218,3 @@ CREATE INDEX ON alerts           (workspace_id);
 CREATE INDEX ON alerts           (resolved_at);
 CREATE INDEX ON event_logs       (workspace_id);
 
-
--- Amarmeshram@9284572177
-
-
---psql "postgresql://neondb_owner:npg_AKuB4wMY2NpV@ep-withered-grass-amjnow0s-pooler.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require" -f config/schema.sql
