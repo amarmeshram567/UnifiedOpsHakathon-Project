@@ -1,10 +1,6 @@
 import axios from "axios";
 
-// const API_BASE = import.meta.env.VITE_BACKEND_URL || "https://unifiedopshakathon-project.onrender.com";
-
-const API_BASE = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
-
-
+const API_BASE = import.meta.env.VITE_BACKEND_URL || 'https://unifiedopshakathon-project-services.onrender.com'
 
 export class ApiError extends Error {
     constructor(message, status, payload) {
