@@ -66,7 +66,7 @@ export default function Login() {
             {/* Right panel — form */}
             <div className="flex-1 flex flex-col justify-center items-center px-6 py-12 relative">
                 {/* Mobile logo */}
-                <div className="lg:hidden absolute top-8 left-6 flex items-center gap-2">
+                <div onClick={() => nav("/")} className="lg:hidden absolute top-8 left-6 flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-yellow-300 animate-pulse" />
                     <span className="font-mono font-semibold text-sm tracking-wide text-neutral-100">
                         Unified<span className="text-yellow-300">Ops</span>
